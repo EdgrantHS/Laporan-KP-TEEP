@@ -1,225 +1,116 @@
 %-----------------------------------------------------------------------------%
 \chapter{\babEmpat}
+%-----------------------------------------------------------------------------%
+Selama pelaksanaan Kerja Praktik di BMW Laboratory, NTUST, penulis terlibat dalam beberapa proyek utama dan kegiatan pendukung yang berfokus pada pengembangan ``Wifi RAN Digital Twin'' dan teknologi terkait. Bab ini akan merinci pelaksanaan kegiatan-kegiatan tersebut.
 
 %-----------------------------------------------------------------------------%
-\section{Kegiatan Kerja Praktik \textit{Probation}}
+\section{Masa Percobaan dan Pembelajaran Awal}
 %-----------------------------------------------------------------------------%
+Periode awal kerja praktik (4 April 2025 sampai 25 Juni 2025) difokuskan pada pembelajaran fundamental dan pengembangan kemampuan dasar yang menjadi landasan untuk proyek-proyek selanjutnya. Kegiatan pada masa ini dibagi menjadi tiga area utama: pemahaman alur kerja, penyiapan infrastruktur, dan pengembangan awal pengumpul data.
+\subsection{Pemahaman Konsep dan Alur Kerja}
+Tahap awal diisi dengan mempelajari alur kerja program magang TEEP, manajemen proyek menggunakan GitHub dan Trello, serta standar dokumentasi dengan Markdown. Penulis juga mempelajari konsep-konsep dasar yang relevan dengan proyek, termasuk arsitektur 5G, standar O-RAN, dan konsep Wifi.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra mauris 
-augue, et porta diam hendrerit efficitur. Nullam interdum nisl nec diam 
-malesuada semper sed id nunc. Etiam et lacus mi. Donec eu leo ornare, 
-sollicitudin justo in, malesuada libero. Phasellus pellentesque urna in mi luctus 
-interdum vel eget lacus. Donec pretium erat leo, at sodales tortor imperdiet in. 
-Nunc venenatis lacus massa, in tincidunt urna interdum sit amet. Aliquam iaculis 
-vulputate metus a dignissim. Vivamus vulputate vitae nunc a pharetra.
+\subsection{Pengembangan Awal Pengumpul Data}
+Sebagai langkah awal untuk pengumpulan data, penulis meneliti berbagai metode untuk mengekstrak data dari perangkat jaringan Unifi. Metode \textit{web scraping} dipilih sebagai pendekatan awal. Penulis mempelajari pustaka Playwright dan berhasil mengembangkan skrip untuk secara otomatis masuk ke dasbor Unifi, menavigasi antarmuka, dan mengumpulkan data metrik dari \textit{Access Point} (AP). Skrip ini menjadi poin awal dari penulis mengembangkan \textit{WiFi Adapter} yang lebih kompleks di kemudian hari.
 
-Donec tincidunt nisl non elit posuere pretium. Pellentesque quis sagittis velit, 
-quis vulputate purus. Quisque maximus justo posuere tempus dictum. Vivamus 
-malesuada, leo eu porta elementum, purus elit tempor massa, in venenatis ligula 
-mauris eget tortor. Phasellus venenatis nisi condimentum, tincidunt sem id, 
-lobortis sem. Quisque volutpat, neque id ultricies finibus, ligula tortor 
-condimentum nunc, ut placerat turpis libero eu dui. Donec faucibus blandit 
-mauris quis posuere. Praesent a justo dapibus, blandit elit ac, pulvinar nulla. 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/pics/unifi.png}
+    \caption{Proses web scraping pada dasbor Ubiquiti Unifi, disensorkan untuk keamanan}
+    \label{fig:unifi}
+\end{figure}
 
-  \subsection{Pengenalan terhadap topik 5G dan O-RAN}
+Pengembangan skrip ini menggunakan struktur kode modular dan mengikuti format yang akan digunakan dalam \textit{WiFi Adapter} akhir. Dengan demikian, penulis dapat dengan mudah memahami alur kode WiFi Adapter yang dipakai di laboratorium.
 
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra mauris 
-  augue, et porta diam hendrerit efficitur. Nullam interdum nisl nec diam 
-  malesuada semper sed id nunc. Etiam et lacus mi. Donec eu leo ornare, 
-  sollicitudin justo in, malesuada libero. Phasellus pellentesque urna in mi luctus 
-  interdum vel eget lacus. Donec pretium erat leo, at sodales tortor imperdiet in. 
-  Nunc venenatis lacus massa, in tincidunt urna interdum sit amet. Aliquam iaculis 
-  vulputate metus a dignissim. Vivamus vulputate vitae nunc a pharetra.
-  Anda diminta untuk menuliskan judul laporan, nama, npm, dan hal-hal lain yang 
-  dibutuhkan untuk pembuatan template. 
+Skrip menggunakan metode \textit{web scraping} dengan Playwright; saat program dijalankan, skrip akan membuka browser secara otomatis, masuk ke dasbor Unifi menggunakan kredensial yang disediakan, menavigasi ke halaman yang berisi metrik AP, dan mengekstrak data yang diperlukan untuk setiap AP (dapat dilihat pada Gambar \ref{fig:unifi}). Data yang dikumpulkan meliputi Nama AP, jumlah klien terhubung, dan statistik lalu lintas. Data ini kemudian diformat dan disimpan dalam file JSON (seperti yang ditunjukkan pada Gambar \ref{fig:unifijson}).
 
-    \subsubsection{Pengenalan terhadap Perkembangan 5G}
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra mauris 
-    augue, et porta diam hendrerit efficitur. Nullam interdum nisl nec diam 
-    malesuada semper sed id nunc. Etiam et lacus mi. Donec eu leo ornare, 
-    sollicitudin justo in, malesuada libero. Phasellus pellentesque urna in mi luctus 
-    interdum vel eget lacus. Donec pretium erat leo, at sodales tortor imperdiet in. 
-    Nunc venenatis lacus massa, in tincidunt urna interdum sit amet. Aliquam iaculis 
-    vulputate metus a dignissim. Vivamus vulputate vitae nunc a pharetra.
-    Anda diminta untuk menuliskan judul laporan, nama, npm, dan hal-hal lain yang 
-    dibutuhkan untuk pembuatan template. 
-
-    \subsubsection{Pengenalan terhadap O-RAN}
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra mauris 
-    augue, et porta diam hendrerit efficitur. Nullam interdum nisl nec diam 
-    malesuada semper sed id nunc. Etiam et lacus mi. Donec eu leo ornare, 
-    sollicitudin justo in, malesuada libero. Phasellus pellentesque urna in mi luctus 
-    interdum vel eget lacus. Donec pretium erat leo, at sodales tortor imperdiet in. 
-    Nunc venenatis lacus massa, in tincidunt urna interdum sit amet. Aliquam iaculis 
-    vulputate metus a dignissim. Vivamus vulputate vitae nunc a pharetra.
-    Anda diminta untuk menuliskan judul laporan, nama, npm, dan hal-hal lain yang 
-    dibutuhkan untuk pembuatan template. 
-
-    \subsubsection{Pengenalan terhadap O1 Interface}
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra mauris 
-    augue, et porta diam hendrerit efficitur. Nullam interdum nisl nec diam 
-    malesuada semper sed id nunc. Etiam et lacus mi. Donec eu leo ornare, 
-    sollicitudin justo in, malesuada libero. Phasellus pellentesque urna in mi luctus 
-    interdum vel eget lacus. Donec pretium erat leo, at sodales tortor imperdiet in. 
-    Nunc venenatis lacus massa, in tincidunt urna interdum sit amet. Aliquam iaculis 
-    vulputate metus a dignissim. Vivamus vulputate vitae nunc a pharetra.
-    Anda diminta untuk menuliskan judul laporan, nama, npm, dan hal-hal lain yang 
-    dibutuhkan untuk pembuatan template. 
-
-  \subsection{Pengenalan terhadap topik WiFi}
-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra mauris 
-  augue, et porta diam hendrerit efficitur. Nullam interdum nisl nec diam 
-  malesuada semper sed id nunc. Etiam et lacus mi. Donec eu leo ornare, 
-  sollicitudin justo in, malesuada libero. Phasellus pellentesque urna in mi luctus 
-  interdum vel eget lacus. Donec pretium erat leo, at sodales tortor imperdiet in. 
-  Nunc venenatis lacus massa, in tincidunt urna interdum sit amet. Aliquam iaculis 
-  vulputate metus a dignissim. Vivamus vulputate vitae nunc a pharetra.
-  Anda diminta untuk menuliskan judul laporan, nama, npm, dan hal-hal lain yang 
-  dibutuhkan untuk pembuatan template. 
-
-    \subsubsection{Perkembangan WiFi Crawling Ubiquitty Unifi}
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra mauris 
-    augue, et porta diam hendrerit efficitur. Nullam interdum nisl nec diam 
-    malesuada semper sed id nunc. Etiam et lacus mi. Donec eu leo ornare, 
-    sollicitudin justo in, malesuada libero. Phasellus pellentesque urna in mi luctus 
-    interdum vel eget lacus. Donec pretium erat leo, at sodales tortor imperdiet in. 
-    Nunc venenatis lacus massa, in tincidunt urna interdum sit amet. Aliquam iaculis 
-    vulputate metus a dignissim. Vivamus vulputate vitae nunc a pharetra.
-    Anda diminta untuk menuliskan judul laporan, nama, npm, dan hal-hal lain yang 
-    dibutuhkan untuk pembuatan template. 
-
-    \subsubsection{Pengenalan terhadap Network Energy Saving}
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra mauris 
-    augue, et porta diam hendrerit efficitur. Nullam interdum nisl nec diam 
-    malesuada semper sed id nunc. Etiam et lacus mi. Donec eu leo ornare, 
-    sollicitudin justo in, malesuada libero. Phasellus pellentesque urna in mi luctus 
-    interdum vel eget lacus. Donec pretium erat leo, at sodales tortor imperdiet in. 
-    Nunc venenatis lacus massa, in tincidunt urna interdum sit amet. Aliquam iaculis 
-    vulputate metus a dignissim. Vivamus vulputate vitae nunc a pharetra.
-    Anda diminta untuk menuliskan judul laporan, nama, npm, dan hal-hal lain yang 
-    dibutuhkan untuk pembuatan template. 
-
-%-----------------------------------------------------------------------------%
-\section{Kegiatan Kerja Praktik secara \textit{On-Site}}
-%-----------------------------------------------------------------------------%
-
-  \subsection{}
-
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{assets/pics/unifijson.png}
+    \caption{Data JSON yang dihasilkan dari proses web scraping, disensorkan untuk keamanan}
+    \label{fig:unifijson}
+\end{figure}
 
 
 %-----------------------------------------------------------------------------%
-\section{ist2ilah.tex}
+\section{Proyek 1: WiFi Adapter untuk Integrasi O-RAN}
 %-----------------------------------------------------------------------------%
-Berkas istilah digunakan untuk mencatat istilah-istilah yang digunakan. 
-Fungsinya hanya untuk memudahkan penulisan.
-Pada beberapa kasus, ada kata-kata yang harus selalu muncul dengan tercetak 
-miring atau tercetak tebal. 
-Dengan menjadikan kata-kata tersebut sebagai sebuah perintah \latex~tentu akan 
-mempercepat dan mempermudah pengerjaan laporan. 
+Proyek ini bertujuan untuk membuat komponen perangkat lunak yang dapat mengumpulkan data dari infrastruktur WiFi di dunia nyata dan memformatnya agar sesuai dengan spesifikasi antarmuka O-RAN O1 untuk sistem \textit{Service Management and Orchestration} (SMO).
 
+\subsection{Pengembangan dan Fungsionalitas}
+Tahap awal pengembangan berfokus pada implementasi \textit{WiFi Adapter} untuk mengirimkan data \textit{Performance Management} (PM) ke SMO. Data ini mencakup metrik penting seperti RSSI dan jumlah klien, yang diformat sebagai laporan berbasis file (JSON/XML) dan dikirim melalui SFTP.
 
-%-----------------------------------------------------------------------------%
-\section{hype.indonesia.tex}
-%-----------------------------------------------------------------------------%
-Berkas ini berisi cara pemenggalan beberapa kata dalam bahasa Indonesia. 
-\latex~memiliki algoritma untuk memenggal kata-kata sendiri, namun untuk 
-beberapa kasus algoritma ini memenggal dengan cara yang salah. 
-Untuk memperbaiki pemenggalan yang salah inilah cara pemenggalan yang benar 
-ditulis dalam berkas hype.indonesia.tex.
+Untuk mendukung interoperabilitas, arsitektur adapter dirancang secara modular dengan beberapa kelas utama: \textit{Connection, Crawler, Converter, Vault,} dan \textit{Database}. Fokus utama adalah pada implementasi untuk perangkat dari vendor Aruba dan HPE. Skrip Python dikembangkan untuk mengekstrak metadata dari \textit{Access Point} (AP) Aruba dan switch HPE menggunakan protokol SNMP.
+\begin{itemize}
+    \item \textbf{Data AP Aruba yang Dikumpulkan:} Nama host AP (\textit{AP\_Name}), alamat IP manajemen, alamat MAC, model AP (\textit{AP Type}), pita frekuensi radio (\textit{radio\_band}), dan detail SSID/BSSID.
+    \item \textbf{Data Switch HPE yang Dikumpulkan:} Data pemetaan port yang menghubungkan perangkat (AP) ke port switch fisik, termasuk \textit{Port Name}, \textit{Switch Hostname}, dan \textit{PoE Type}.
+\end{itemize}
+Selama pengembangan, penulis melakukan pengujian \textit{crawling} PoE, debugging masalah \textit{crawling} RSSI, menangani pengambilan kredensial dari beberapa database, dan mencocokkan parameter agar sesuai dengan standar O-RAN.
 
-
-%-----------------------------------------------------------------------------%
-\section{pustaka2.tex}
-%-----------------------------------------------------------------------------%
-Berkas pustaka.tex berisi seluruh daftar referensi yang digunakan dalam 
-laporan. 
-Anda bisa membuat model daftar referensi lain dengan menggunakan bibtex.
-Untuk mempelajari bibtex lebih lanjut, silahkan buka 
-\url{http://www.bibtex.org/Format}. 
-Untuk merujuk pada salah satu referensi yang ada, gunakan perintah \bslash 
-cite, e.g. \bslash cite\{lankton2008introduction\} yang akan akan memunculkan 
-\cite{edgrant2025kptemplate}
-\cite{febrian2017uitemplate}
-
+\subsection{Integrasi dengan SMO}
+Tahap selanjutnya adalah mengintegrasikan data yang dikumpulkan dengan struktur PM di SMO. Kegiatan pada tahap ini meliputi:
+\begin{itemize}
+    \item Memperbaiki kesalahan pada format XML PM agar sesuai dengan ekspektasi SMO.
+    \item Mengedit label dan melakukan sanitasi data.
+    \item Mengimplementasikan fitur seperti penghapusan file PM dan pengaturan tanggal kedaluwarsa file.
+    \item Mempersiapkan integrasi NETCONF dengan menginstal pustaka yang diperlukan di lingkungan server.
+\end{itemize}
+Kegiatan integrasi SMO ini sebagian besar dilakukan pada awal Oktober 2025.
 
 %-----------------------------------------------------------------------------%
-\section{bab[1 - 6].tex}
+\section{Proyek 2: Simulator RSSI Sionna dan Pipeline Lokalisasi}
 %-----------------------------------------------------------------------------%
-Berkas ini berisi isi laporan yang Anda tulis. 
-Setiap nama berkas e.g. bab1.tex merepresentasikan bab dimana tulisan tersebut 
-akan muncul. 
-Sebagai contoh, kode dimana tulisan ini dibaut berada dalam berkas dengan nama 
-bab4.tex. 
-Ada enam buah berkas yang telah disiapkan untuk mengakomodir enam bab dari 
-laporan Anda, diluar bab kesimpulan dan saran. 
-Jika Anda tidak membutuhkan sebanyak itu, silahkan hapus kode dalam berkas 
-thesis.tex yang memasukan berkas \latex~yang tidak dibutuhkan;  contohnya 
-perintah \bslash include\{bab6.tex\} merupakan kode untuk memasukan berkas 
-bab6.tex kedalam laporan.
+Proyek ini merupakan inti dari penelitian ``Wifi RAN Digital Twin'', yang berfokus pada pembuatan lingkungan kembaran digital untuk analisis propagasi sinyal dan pemodelan lokalisasi.
+
+\subsection{Pengembangan Aplikasi Simulator Sionna}
+Penulis mengembangkan aplikasi Python bernama \texttt{RSSI\_App.py} yang menggunakan NVIDIA Sionna untuk menyimulasikan propagasi sinyal dan memperkirakan nilai RSSI. Arsitektur aplikasi, diagram kelas, dan diagram urutan juga dirancang untuk mendokumentasikan sistem. Untuk simulasi, sebuah lingkungan 3D dari denah lantai gedung dibuat menggunakan Blender.
+
+Salah satu bagian penting dari proyek ini adalah kalibrasi parameter. Metode \textit{parameter sweeping} diimplementasikan untuk mengeksplorasi efek dari berbagai parameter, seperti efek material (konduktivitas, permitivitas, koefisien hamburan, dan ketebalan dinding). Metode optimisasi hibrida yang menggabungkan CMA-ES dan Adam (\texttt{06\_hybrid-optimization\_4-params.py}) digunakan untuk menyetel parameter simulasi agar hasilnya cocok dengan data RSSI yang diukur di dunia nyata. Aplikasi ini menghasilkan output berupa \textit{heatmap}, plot, dan dataset sidik jari.
+
+\subsection{Implementasi Pipeline Lokalisasi}
+Sebagai bukti konsep (\textit{Proof-of-Concept}), model lokalisasi sederhana dikembangkan menggunakan K-Nearest Neighbors (KNN) dan dataset sederhana. Selain itu, model klasifikasi ruangan juga dibuat.
+
+Pipeline lokalisasi yang lebih lengkap diimplementasikan dengan alur sebagai berikut:
+\begin{enumerate}
+    \item Dataset sidik jari dihasilkan menggunakan parameter simulasi yang telah dikalibrasi.
+    \item Eksperimen lokalisasi KNN dijalankan (\texttt{02\_rssi-knn-for-ap.ipynb}) menggunakan sidik jari yang dihasilkan dan dibandingkan dengan data RSSI AP dari dunia nyata.
+    \item Selain itu, penulis juga menjalankan kembali dan memodifikasi eksperimen lokalisasi \textit{Rogue AP} berbasis XGBoost yang sudah ada sebelumnya, dan mengintegrasikan Sionna untuk visualisasi/pemetaan lokasi yang diprediksi.
+\end{enumerate}
 
 %-----------------------------------------------------------------------------%
-\section{Penulisan \textit{code} atau \textit{pseudocode} program}
+\section{Proyek 3: Layanan Sinkronisasi GitHub ke Trello}
 %-----------------------------------------------------------------------------%
+Penulis memberikan kontribusi signifikan dalam meningkatkan dan memelihara layanan sinkronisasi dua arah yang dirancang untuk menyelaraskan log harian dan \textit{milestone} antara file Markdown di GitHub dan kartu di Trello.
 
-\subsection{\textit{Inline}}
+Pekerjaan berpusat pada debugging, finalisasi, dan refaktorisasi basis kode. Beberapa perbaikan bug kritis yang berhasil diselesaikan antara lain:
+\begin{itemize}
+    \item \textbf{Efek ``Ping-Pong'':} Masalah yang disebabkan oleh perbedaan stempel waktu kecil yang menyebabkan sinkronisasi berulang tanpa henti.
+    \item \textbf{Batas 50 Komentar API Trello:} Diatasi dengan mengimplementasikan paginasi berbasis kursor.
+    \item \textbf{Duplikasi Aturan Horizontal:} Memperbaiki kesalahan pemformatan Markdown.
+\end{itemize}
+Selain perbaikan bug, fitur baru juga dikembangkan, yaitu resolusi konflik antar komentar yang dapat dikonfigurasi. Fitur ini memungkinkan pengguna memilih strategi resolusi, seperti \texttt{more\_recent} (berdasarkan stempel waktu) atau \texttt{more\_characters} (mempertahankan konten yang lebih detail). Penulis juga membuat dokumentasi yang komprehensif (termasuk dokumentasi Sphinx) dan video demo untuk alat ini.
 
-Dengan perintah \verb|\verb|: \verb|System.out.println("Hello, World");| \\
-Dengan perintah \textit{custom} \verb|\code|: \code{System.out.println("Hello, World"); }
-Dengan perintah \verb|\mintinline|: \mintinline{java}{System.out.println("Hello, World"); }
+%-----------------------------------------------------------------------------%
+\section{Riset, Analisis, dan Aktivitas Pendukung}
+%-----------------------------------------------------------------------------%
+Selain proyek-proyek utama, penulis juga terlibat dalam berbagai kegiatan penelitian, analisis, dan pendukung.
 
-\subsection{\textit{Multiline}}
+\subsection{Pengumpulan Data Awal dengan Web Scraping}
 
-Dengan perintah \verb|verbatim|: 
-
-\begin{verbatim}	
-public class HelloWorld {
-    public static void main(String[] args) {
-        // Prints "Hello, World" to the terminal window.
-        System.out.println("Hello, World");
-    }
-}
-\end{verbatim}
-
-Dengan perintah \verb|minted|: Kode \ref{code:hw:minted}
-\begin{listing}[H]
-    \begin{minted}{python}
-def binary_accuracy(y_true, y_pred):
-    return K.mean(K.equal(y_true, K.round(y_pred)), axis=-1)
+Sebelum implementasi \textit{WiFi Adapter} berbasis SNMP, fokus awal adalah mengumpulkan data dari perangkat Ubiquiti Unifi menggunakan \textit{web scraping}. Penulis meneliti berbagai metode pengumpulan data dan memilih Playwright untuk melakukan \textit{scraping} pada dasbor Unifi. Skrip yang dikembangkan mampu menangani login, navigasi, menangkap data AP secara berkala (Nama AP, Alamat IP, Klien, Throughput, dll.), melakukan hashing pada alamat IP/MAC, dan menyimpan data ke format JSON atau mengunggahnya langsung ke InfluxDB.
 
 
-def categorical_accuracy(y_true, y_pred):
-    return K.cast(K.equal(K.argmax(y_true, axis=-1),
-                          K.argmax(y_pred, axis=-1)),
-                  K.floatx())
+\subsection{Studi Konsep O-RAN dan Wifi RAN}
+Penulis mempelajari standar O-RAN, dengan fokus pada Spesifikasi Antarmuka O1 (WG10). Dari studi ini, tiga fase untuk pengembangan \textit{WiFi Adapter} diformalkan: 1) pengiriman data PM melalui VES/SFTP, 2) konfigurasi melalui NETCONF, dan 3) kontrol penuh SMO sebagai produsen MNS.
 
+\subsection{Analisis Kasus Penggunaan Data WiFi}
+Penulis menganalisis berbagai kasus penggunaan data WiFi, termasuk prediksi beban untuk penghematan energi, estimasi propagasi AP menggunakan Sionna, pembuatan profil pergerakan pengguna, deteksi anomali tanpa pengawasan, dan analisis waktu tinggal (\textit{dwell-time}). Analisis data RSSI juga dilakukan, di mana penulis mempelajari konsep dasar elektromagnetik dan analisis deret waktu.
 
-def sparse_categorical_accuracy(y_true, y_pred):
-    # reshape in case it's in shape (num_samples, 1) instead of (num_samples,)
-    if K.ndim(y_true) == K.ndim(y_pred):
-        y_true = K.squeeze(y_true, -1)
-    # convert dense predictions to labels
-    y_pred_labels = K.argmax(y_pred, axis=-1)
-    y_pred_labels = K.cast(y_pred_labels, K.floatx())
-    return K.cast(K.equal(y_true, y_pred_labels), K.floatx())
-
-
-def top_k_categorical_accuracy(y_true, y_pred, k=5):
-    return K.mean(K.in_top_k(y_pred, K.argmax(y_true, axis=-1), k), axis=-1)
-
-
-def sparse_top_k_categorical_accuracy(y_true, y_pred, k=5):
-    # If the shape of y_true is (num_samples, 1), flatten to (num_samples,)
-    return K.mean(K.in_top_k(y_pred, K.cast(K.flatten(y_true), 'int32'), k),
-                  axis=-1)
-    \end{minted}
-    \caption{An excerpt from keras: \url{https://github.com/keras-team/keras/blob/master/keras/metrics.py}}
-    \label{code:hw:minted}
-\end{listing}
-
-Konfigurasi tampilan bisa dilakukan di \verb|uithesis.sty| dengan referensi dokumentasi di \url{https://github.com/gpoore/minted/blob/master/source/minted.pdf}
+\subsection{Logistik dan Dokumentasi}
+Tugas-tugas lain yang dilakukan meliputi:
+\begin{itemize}
+    \item \textbf{Administrasi/Infrastruktur:} Memperbaiki masalah pada server/PC lab (akses Proxmox, masalah login Ubuntu, mengambil perangkat keras lab, dan menangani penyimpanan penuh pada server InfluxDB).
+    \item \textbf{Pengembangan Situs Web Lab:} Mengerjakan perombakan komprehensif situs web BMW Lab menggunakan Google Sites.
+    \item \textbf{Dokumentasi Resmi:} Menyusun log KP dan laporan KP menggunakan LaTeX, membuat dan merevisi video testimoni dan penjelasan proyek, serta menyiapkan berbagai slide presentasi.
+    \item \textbf{Manajemen Peserta Magang Baru:} Membuat sumber daya pembelajaran, rencana studi, dan tugas untuk peserta magang baru.
+\end{itemize}

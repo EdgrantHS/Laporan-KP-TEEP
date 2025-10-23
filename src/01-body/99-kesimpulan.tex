@@ -1,15 +1,37 @@
 %---------------------------------------------------------------
 \chapter{\kesimpulan}
 %---------------------------------------------------------------
-\todo{Tambahkan kesimpulan dan saran terkait dengan perkerjaan 
-	yang dilakukan.}
-
 
 %---------------------------------------------------------------
 \section{Kesimpulan}
 %---------------------------------------------------------------
-
+Selama periode Kerja Praktik di Broadband Multimedia Wireless (BMW) Laboratory, NTUST, penulis telah berhasil menyelesaikan serangkaian tugas yang berpusat pada pengembangan "Wifi RAN Digital Twin". Berikut adalah kesimpulan dari kegiatan yang telah dilakukan:
+\begin{enumerate}
+    \item Berhasil mengembangkan \textbf{WiFi Adapter} yang mampu mengumpulkan data PM dari perangkat AP Aruba dan switch HPE menggunakan SNMP. Adapter ini juga mampu memformat data ke dalam XML sesuai standar O-RAN O1 dan mengirimkannya ke SMO, yang merupakan langkah fundamental dalam integrasi jaringan fisik dengan sistem manajemen terpusat.
+    \item Berhasil membangun \textbf{aplikasi simulator RSSI menggunakan NVIDIA Sionna} yang berfungsi sebagai inti dari \textit{Digital Twin}. Aplikasi ini mampu menghasilkan data propagasi sinyal dalam lingkungan 3D yang kompleks dan telah dikalibrasi menggunakan metode optimisasi hibrida (CMA-ES dan Adam) untuk mencocokkan kondisi dunia nyata.
+    \item Berhasil mengimplementasikan dan memvalidasi \textbf{pipeline lokalisasi} menggunakan model KNN. Dengan membandingkan data sidik jari yang dihasilkan simulator dengan data pengukuran nyata, sistem ini menunjukkan potensi besar untuk aplikasi lokalisasi di dalam ruangan dengan akurasi yang dapat diandalkan.
+    \item Memberikan kontribusi signifikan pada \textbf{proyek pendukung laboratorium}, terutama pada layanan sinkronisasi GitHub-Trello, dengan menyelesaikan bug kritis dan menambahkan fitur resolusi konflik. Hal ini meningkatkan efisiensi alur kerja dan manajemen proyek di dalam lab.
+    \item Memperoleh pemahaman mendalam tentang berbagai teknologi kunci, termasuk standar O-RAN, simulasi RF, pengumpulan data jaringan (SNMP dan \textit{web scraping}), manajemen infrastruktur server, serta keterampilan dokumentasi teknis menggunakan LaTeX dan Sphinx.
+\end{enumerate}
+Secara keseluruhan, kerja praktik ini telah berhasil mencapai tujuannya dan memberikan kontribusi nyata bagi proyek penelitian di BMW Laboratory, sekaligus memberikan pengalaman dan pengetahuan yang sangat berharga bagi penulis.
 
 %---------------------------------------------------------------
 \section{Saran}
 %---------------------------------------------------------------
+Berdasarkan pengalaman dan hasil yang diperoleh selama kerja praktik, terdapat beberapa saran untuk pengembangan lebih lanjut dari proyek-proyek yang telah dikerjakan:
+\begin{enumerate}
+    \item \textbf{Pengembangan Lanjutan WiFi Adapter:}
+    Fungsionalitas \textit{WiFi Adapter} dapat diperluas untuk mendukung fase konfigurasi melalui NETCONF (Fase 2) dan kontrol penuh SMO sebagai produsen MNS (Fase 3). Selain itu, dukungan untuk vendor perangkat lain dapat ditambahkan untuk meningkatkan fleksibilitas dan interoperabilitas.
+
+    \item \textbf{Peningkatan Akurasi Digital Twin:}
+    Akurasi model \textit{Digital Twin} dapat ditingkatkan lebih lanjut dengan menggunakan model 3D yang lebih detail dan akurat. Selain itu, eksplorasi parameter material yang lebih luas dan penggunaan algoritma optimisasi yang lebih canggih dapat membantu mengurangi selisih antara hasil simulasi dan pengukuran dunia nyata.
+
+    \item \textbf{Eksplorasi Model AI yang Lebih Kompleks:}
+    Untuk pipeline lokalisasi, model AI yang lebih canggih seperti \textit{Convolutional Neural Networks} (CNN) atau \textit{Transformers} dapat dieksplorasi untuk meningkatkan akurasi dan ketahanan terhadap \textit{noise}. Model-model ini berpotensi menangkap pola spasial dari data RSSI yang tidak dapat ditangkap oleh KNN.
+
+    \item \textbf{Integrasi End-to-End:}
+    Langkah selanjutnya yang ideal adalah mengintegrasikan seluruh komponen secara \textit{end-to-end}, di mana data dari \textit{WiFi Adapter} secara otomatis dimasukkan ke dalam SMO, yang kemudian dapat memicu simulasi di \textit{Digital Twin} untuk analisis atau prediksi secara \textit{real-time}.
+
+    \item \textbf{Dokumentasi dan Standardisasi Kode:}
+    Untuk memastikan keberlanjutan proyek, disarankan untuk terus meningkatkan kualitas dokumentasi dan melakukan standardisasi kode di seluruh proyek. Hal ini akan memudahkan kolaborasi dan serah terima pekerjaan kepada anggota tim atau peserta magang di masa depan.
+\end{enumerate}
