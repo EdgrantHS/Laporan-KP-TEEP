@@ -50,7 +50,22 @@
 Arsitektur IEEE 802.11 (Wi-Fi) terdiri dari beberapa komponen fundamental yang membentuk jaringan nirkabel \cite{cisco_wifi_6}. Unit dasarnya adalah \textit{Basic Service Set} (BSS), yang terdiri dari sebuah \textit{Access Point} (AP) dan beberapa perangkat klien (\textit{Stations} atau STA). AP berfungsi sebagai jembatan antara perangkat nirkabel dan jaringan kabel. Beberapa BSS dapat digabungkan menjadi sebuah \textit{Extended Service Set} (ESS) menggunakan \textit{Distribution System} (biasanya jaringan Ethernet), yang memungkinkan perangkat untuk berpindah antar-AP secara mulus. Setiap jaringan diidentifikasi oleh \textit{Service Set Identifier} (SSID).
 
 \subsection{Frekuensi dan Channel WiFi}
-Wi-Fi umumnya beroperasi pada dua pita frekuensi utama: 2,4 GHz dan 5 GHz. Pita 2,4 GHz menawarkan jangkauan yang lebih luas dan penetrasi sinyal yang lebih baik terhadap halangan seperti dinding, namun memiliki jumlah kanal yang terbatas (hanya 3 kanal yang tidak tumpang tindih) dan rentan terhadap interferensi dari perangkat lain (misalnya, Bluetooth dan microwave). Sebaliknya, pita 5 GHz menyediakan lebih banyak kanal dan kecepatan data yang lebih tinggi, namun dengan jangkauan yang lebih pendek dan penetrasi yang lebih lemah.
+Wi-Fi beroperasi pada spektrum frekuensi radio yang telah dialokasikan untuk penggunaan Industrial, Scientific, dan Medical (ISM), khususnya pada pita 2,4 GHz dan 5 GHz. Karakteristik masing-masing pita frekuensi memberikan trade-off yang berbeda dalam hal jangkauan, kecepatan, dan interferensi.\cite{intel_wifi_freq}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/pics/bab3_4.png}
+    \caption{Arsitektur WiFi - 2.4 GHz vs 5 GHz}
+    \label{fig:digital_twin_concept}
+\end{figure}
+
+\textbf{Pita 2,4 GHz} beroperasi pada rentang frekuensi 2.400-2.485 GHz dengan total bandwidth 85 MHz yang dibagi menjadi 14 channel dengan lebar 20 MHz setiap channel. Karakteristik utama pita ini meliputi propagasi yang lebih baik melalui penghalang seperti dinding dan furniture, sehingga memberikan area cakupan yang lebih luas dengan penetrasi yang superior. Namun, pita 2,4 GHz memiliki keterbatasan dalam hal jumlah channel yang tidak saling overlap yang hanya tersedia 3 channel (channel 1, 6, dan 11 di sebagian besar wilayah), yang mengakibatkan potensi interferensi yang lebih tinggi dalam lingkungan dengan banyak access point.
+
+Pita 2,4 GHz juga menghadapi interferensi dari berbagai perangkat elektronik seperti oven microwave, perangkat Bluetooth, mouse nirkabel, dan perangkat ISM lainnya. Kecepatan data maksimum pada pita ini relatif lebih rendah dibandingkan 5 GHz, dengan throughput yang bisa menurun signifikan dalam kondisi interferensi tinggi atau kemacetan.
+
+\textbf{Pita 5 GHz} beroperasi pada spektrum yang lebih luas dengan beberapa sub-pita: 5.150-5.250 GHz (UNII-1), 5.250-5.350 GHz (UNII-2), 5.470-5.725 GHz (UNII-2 Extended), dan 5.725-5.825 GHz (UNII-3). Total bandwidth yang tersedia mencapai 500+ MHz dengan puluhan channel yang tidak saling overlap, memberikan fleksibilitas yang jauh lebih besar dalam penerapan dan mengurangi interferensi antar channel.
+
+Karakteristik pita 5 GHz mencakup throughput yang lebih tinggi dan latensi yang lebih rendah, namun dengan trade-off berupa jangkauan yang lebih terbatas dan penetrasi yang lebih lemah melalui penghalang. Pelemahan sinyal yang lebih tinggi pada frekuensi 5 GHz mengharuskan penerapan yang lebih padat untuk mempertahankan cakupan yang optimal.
 
 \subsection{Metrik Kinerja WiFi}
 
@@ -63,7 +78,7 @@ Wi-Fi umumnya beroperasi pada dua pita frekuensi utama: 2,4 GHz dan 5 GHz. Pita 
 
 Evaluasi kinerja jaringan Wi-Fi dapat dilakukan dengan mengukur berbagai metrik kunci:
 \begin{itemize}
-    \item \textbf{Received Signal Strength Indicator (RSSI):} Pengukuran kekuatan sinyal yang diterima oleh perangkat, biasanya dinyatakan dalam dBm. Nilai yang lebih tinggi (mendekati 0 dBm) menunjukkan sinyal yang lebih kuat. Sebagai contoh, nilai RSSI di atas -50 dBm dianggap sangat baik, sedangkan di bawah -90 dBm dianggap buruk (Gambar \ref{fig:rssi}).
+    \item \textbf{Received Signal Strength Indicator (RSSI):} Pengukuran kekuatan sinyal yang diterima oleh perangkat, biasanya dinyatakan dalam dBm. Nilai yang lebih tinggi (mendekati 0 dBm) menunjukkan sinyal yang lebih kuat. Sebagai contoh, nilai RSSI di atas -50 dBm dianggap sangat baik, sedangkan di bawah -90 dBm dianggap buruk (Gambar \ref{fig:rssi}). \cite{ttn_rssi_snr}
     \item \textbf{Signal-to-Noise Ratio (SNR):} Rasio antara kekuatan sinyal yang diinginkan dengan tingkat derau (\textit{noise}) di sekitarnya. SNR yang tinggi mengindikasikan kualitas sinyal yang lebih baik.
     \item \textbf{Throughput dan Kapasitas:} Representasi laju data aktual yang dapat dicapai dalam kondisi nyata, yang seringkali lebih rendah dari laju data teoretis karena berbagai faktor seperti \textit{overhead} protokol.
 \end{itemize}
@@ -80,10 +95,20 @@ Jaringan 5G adalah standar teknologi seluler generasi kelima yang dirancang untu
 \begin{itemize}
     \item \textit{Enhanced Mobile Broadband} (eMBB) untuk aplikasi bandwidth tinggi seperti video 8K dan VR.
     \item \textit{Ultra-Reliable Low-Latency Communications} (URLLC) untuk aplikasi kritis seperti kendaraan otonom dan otomasi industri.
-    \item \textit{Massive Machine-Type Communications} (mMTC) untuk menghubungkan miliaran perangkat IoT.
+    \item \textit{Massive Machine-Type Communications} (mMTC) untuk menghubungkan miliaran perangkat IoT.\cite{etsi_5g_use_cases}
 \end{itemize}
 
+Perbedaan signifikan 5G dengan generasi sebelumnya terletak pada arsitektur jaringan yang sepenuhnya tervirtualisasi dan cloud-native. Jaringan 5G memanfaatkan spektrum yang lebih efisien termasuk frekuensi millimeter wave, teknologi antena seperti Massive MIMO, dan kemampuan network slicing yang memungkinkan beberapa jaringan virtual pada infrastruktur fisik yang sama.
+
 \subsection{Arsitektur Jaringan 5G}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/pics/bab3_7.png}
+    \caption{Arsitektur Jaringan 5G - Diagram menunjukkan 5GC, NG-RAN, dan interkoneksi}
+    \label{fig:5g_architecture}
+\end{figure}
+
 Arsitektur 5G mengadopsi \textit{Service-Based Architecture} (SBA), yang berbeda dari arsitektur monolitik generasi sebelumnya. Dalam SBA, fungsi-fungsi jaringan diimplementasikan sebagai layanan mikro (\textit{microservices}) yang berjalan di platform berbasis cloud. Arsitektur ini terdiri dari tiga komponen utama: \textit{User Equipment} (UE) atau perangkat pengguna, \textit{Next-Generation Radio Access Network} (NG-RAN) yang mencakup stasiun pemancar (gNodeB), dan \textit{5G Core} (5GC) yang menjadi pusat kendali jaringan. Desain modular ini memungkinkan fleksibilitas, skalabilitas, dan inovasi yang lebih cepat.
 
 RAN 5G terdiri dari gNodeB yang mengelola komunikasi radio dengan UE. gNodeB dapat dibagi menjadi dua unit: \textit{Centralized Unit} (CU) yang menangani fungsi lapisan atas, dan \textit{Distributed Unit} (DU) yang menangani fungsi lapisan bawah. Pemisahan ini memungkinkan optimisasi sumber daya dan penempatan fungsi jaringan yang lebih efisien.
@@ -116,18 +141,18 @@ Non-RT RIC adalah komponen dalam SMO yang menjalankan fungsi fungsi yang tidak m
     \centering
     \includegraphics[width=0.8\textwidth]{assets/pics/oran-nonrt.png}
     \caption{Arsitektur Non-RT RIC}
-    \label{fig:nonrt_ric_architecture}
+     \label{fig:nonrt_ric_architecture}
 \end{figure}
 
 \subsection{Antarmuka O1 dan Virtual Event Streaming (VES)}
-Antarmuka O1 adalah saluran manajemen antara SMO dan elemen-elemen jaringan O-RAN (seperti O-CU, O-DU, dan O-RU). Antarmuka ini digunakan untuk tugas-tugas manajemen seperti konfigurasi, pemantauan kinerja, dan penanganan kesalahan (FCAPS). O1 menggunakan protokol NETCONF dengan model data YANG untuk memastikan interoperabilitas.
+Antarmuka O1 adalah saluran manajemen antara SMO dan elemen-elemen jaringan O-RAN (seperti O-CU, O-DU, dan O-RU). Antarmuka ini digunakan untuk tugas-tugas manajemen seperti konfigurasi, pemantauan kinerja, dan penanganan kesalahan (FCAPS). O1 menggunakan protokol NETCONF dengan model data YANG untuk memastikan interoperabilitas \cite{oran_o1_spec_2024}.
 
 O-RAN menggunakan mekanisme \textit{streaming} \textit{Virtual Event Streaming} (VES) sehingga SMO harus secara aktif meminta data (polling), elemen jaringan dapat secara proaktif mengirimkan \textit{event} dalam format standar JSON melalui VES Collector. Ini memungkinkan pemantauan  yang lebih efisien dan granular, yang penting untuk mendukung analisis prediktif dan otomasi berbasis \textit{event} di dalam SMO dan Non-RT RIC.
 
 %-----------------------------------------------------------------------------%
 \section{NVIDIA Sionna}
 %-----------------------------------------------------------------------------%
-NVIDIA Sionna adalah sebuah \textit{framework open-source} berbasis TensorFlow yang dirancang untuk simulasi \textit{link-level} dari sistem komunikasi nirkabel \cite{nvidia_sionna}. Keunggulan utamanya adalah kemampuannya untuk melakukan simulasi yang dapat terdiferensiasi (\textit{differentiable}) dan dipercepat oleh GPU. Hal ini memungkinkan integrasi langsung dengan kerangka kerja \textit{machine learning}.
+NVIDIA Sionna adalah sebuah \textit{framework open-source} berbasis TensorFlow yang dirancang untuk simulasi \textit{link-level} dari sistem komunikasi nirkabel \cite{nvidia_sionna, nvidia_sionna_rt}. Keunggulan utamanya adalah kemampuannya untuk melakukan simulasi yang dapat terdiferensiasi (\textit{differentiable}) dan dipercepat oleh GPU. Hal ini memungkinkan integrasi langsung dengan kerangka kerja \textit{machine learning}.
 
 Sionna mampu menghasilkan \textit{Channel Impulse Response} (CIR), yaitu deskripsi lengkap tentang bagaimana sinyal merambat dari pemancar ke penerima melalui berbagai jalur (pantulan, difraksi, dll.). Dari CIR ini, \textit{Received Signal Strength Indicator} (RSSI) dapat dihitung, memberikan gambaran kekuatan sinyal yang diterima.
 
